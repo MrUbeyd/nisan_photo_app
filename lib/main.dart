@@ -471,6 +471,8 @@ class _MultiImageUploadState extends State<MultiImageUpload> {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               const SizedBox(height: 32),
               Image.asset(
