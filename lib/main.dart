@@ -467,160 +467,166 @@ class _MultiImageUploadState extends State<MultiImageUpload> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(height: 32),
-            Image.asset(
-              'assets/images/title.png',
-              width: MediaQuery.sizeOf(context).width * 0.7,
-            ),
-            const SizedBox(height: 32),
-            Image.asset(
-              'assets/images/flower.png',
-              height: MediaQuery.sizeOf(context).height * 0.1,
-            ),
-            const SizedBox(height: 32),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/images/image_upload_bg.png',
-                      width: MediaQuery.sizeOf(context).width * 0.9,
-                    ),
-                    Container(
-                      child: images.isEmpty
-                          ? Container(
-                              decoration: BoxDecoration(color: Colors.white70, borderRadius: BorderRadius.circular(40)),
-                              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                              child: GestureDetector(
-                                onTap: chooseImages,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Fotoğrafları Seç & Yükle",
-                                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                                    ),
-                                    const SizedBox(width: 16),
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 8.0),
-                                      child: Image.asset(
-                                        'assets/images/camera.png',
-                                        width: 32,
+      backgroundColor: const Color(0xFFF5F5F5),
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(height: 32),
+              Image.asset(
+                'assets/images/title.png',
+                width: MediaQuery.sizeOf(context).width * 0.7,
+              ),
+              const SizedBox(height: 32),
+              Image.asset(
+                'assets/images/flower.png',
+                height: MediaQuery.sizeOf(context).height * 0.1,
+              ),
+              const SizedBox(height: 32),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/image_upload_bg.png',
+                        width: MediaQuery.sizeOf(context).width * 0.9,
+                      ),
+                      Container(
+                        child: images.isEmpty
+                            ? Container(
+                                decoration: BoxDecoration(color: Colors.white70, borderRadius: BorderRadius.circular(40)),
+                                padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                                child: GestureDetector(
+                                  onTap: chooseImages,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "Fotoğrafları Seç & Yükle",
+                                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )
-                          : SizedBox(
-                              width: MediaQuery.sizeOf(context).width * 0.9,
-                              child: SingleChildScrollView(
-                                controller: _scrollController,
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  children: images.map((image) {
-                                    int index = images.indexOf(image);
-                                    return Container(
-                                      margin: const EdgeInsets.all(8),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(10),
-                                        child: Image.memory(
-                                          image,
-                                          height: MediaQuery.sizeOf(context).width * 0.2,
-                                          width: MediaQuery.sizeOf(context).width * 0.2,
-                                          fit: BoxFit.cover,
+                                      const SizedBox(width: 16),
+                                      Padding(
+                                        padding: const EdgeInsets.only(bottom: 8.0),
+                                        child: Image.asset(
+                                          'assets/images/camera.png',
+                                          width: 32,
                                         ),
                                       ),
-                                    );
-                                  }).toList(),
-                                ),
-                              ),
-                            ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 32),
-                if (images.isNotEmpty && totalProgress == 0 && uploadedUrls.isEmpty)
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: resetImages,
-                        style: ElevatedButton.styleFrom(
-                          textStyle: const TextStyle(color: Colors.black),
-                          backgroundColor: Colors.white70,
-                        ),
-                        child: const Text("Seçimleri Kaldır"),
-                      ),
-                      const SizedBox(width: 16),
-                      ElevatedButton(
-                        onPressed: isUploading
-                            ? null
-                            : uploadedUrls.isEmpty
-                                ? uploadImages
-                                : null,
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white70,
-                          textStyle: const TextStyle(color: Colors.black),
-                        ),
-                        child: isUploading
-                            ? const Padding(
-                                padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
-                                child: SizedBox(
-                                  width: 24,
-                                  height: 24,
-                                  child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                                    strokeWidth: 2,
+                                    ],
                                   ),
                                 ),
                               )
-                            : const Text("Resimleri Yükle"),
+                            : SizedBox(
+                                width: MediaQuery.sizeOf(context).width * 0.9,
+                                child: SingleChildScrollView(
+                                  controller: _scrollController,
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: images.map((image) {
+                                      int index = images.indexOf(image);
+                                      return Container(
+                                        margin: const EdgeInsets.all(8),
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: Image.memory(
+                                            image,
+                                            height: MediaQuery.sizeOf(context).width * 0.2,
+                                            width: MediaQuery.sizeOf(context).width * 0.2,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                              ),
                       ),
                     ],
                   ),
-                const SizedBox(height: 10),
-                Container(
-                  child: totalProgress == 0
-                      ? const SizedBox.shrink()
-                      : totalProgress == 100
-                          ? Container(
-                              decoration: const BoxDecoration(color: Colors.white60, shape: BoxShape.circle),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(Icons.check_rounded, color: Colors.green[800], size: 32),
+                  const SizedBox(height: 32),
+                  if (images.isNotEmpty && totalProgress == 0 && uploadedUrls.isEmpty)
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: resetImages,
+                          style: ElevatedButton.styleFrom(
+                            textStyle: const TextStyle(color: Colors.black),
+                            backgroundColor: Colors.white70,
+                          ),
+                          child: const Text("Seçimleri Kaldır"),
+                        ),
+                        const SizedBox(width: 16),
+                        ElevatedButton(
+                          onPressed: isUploading
+                              ? null
+                              : uploadedUrls.isEmpty
+                                  ? uploadImages
+                                  : null,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white70,
+                            textStyle: const TextStyle(color: Colors.black),
+                          ),
+                          child: isUploading
+                              ? const Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
+                                  child: SizedBox(
+                                    width: 24,
+                                    height: 24,
+                                    child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                      strokeWidth: 2,
+                                    ),
+                                  ),
+                                )
+                              : const Text("Resimleri Yükle"),
+                        ),
+                      ],
+                    ),
+                  const SizedBox(height: 10),
+                  Container(
+                    child: totalProgress == 0
+                        ? const SizedBox.shrink()
+                        : totalProgress == 100
+                            ? Container(
+                                decoration: const BoxDecoration(color: Colors.white60, shape: BoxShape.circle),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(Icons.check_rounded, color: Colors.green[800], size: 32),
+                                ),
+                              )
+                            : Text(
+                                "Yükleniyor... ${totalProgress.toStringAsFixed(2)}%",
+                                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                               ),
-                            )
-                          : Text(
-                              "Yükleniyor... ${totalProgress.toStringAsFixed(2)}%",
-                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width * 0.5,
+                child: const Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Nişanımızda bizleri yalnız bırakmadığınız için teşekkürler ",
+                      style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
+                    ),
+                    Text(
+                      "💫",
+                      style: TextStyle(color: Colors.amber),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            const Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Nişanımızda bizleri yalnız bırakmadığınız için teşekkürler ",
-                  style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
-                ),
-                Text(
-                  "💫",
-                  style: TextStyle(color: Colors.amber),
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
