@@ -611,31 +611,48 @@ class _MultiImageUploadState extends State<MultiImageUpload> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 24),
-                const SizedBox(
-                  width: 300,
-                  child: Column(
-                    children: [
-                      Text(
-                        "Nişanımızda bizleri yalnız bırakmadığınız",
-                        style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "için teşekkürler ",
-                            style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
-                          ),
-                          Text(
-                            "💫",
-                            style: TextStyle(color: Colors.amber),
-                          ),
-                        ],
-                      ),
-                    ],
+                const SizedBox(height: 8),
+                Padding(
+                  padding: const EdgeInsets.all(24.0),
+                  child: Image.asset(
+                    'assets/images/thanks.png',
+                    // width: MediaQuery.sizeOf(context).width * 0.9,
                   ),
-                )
+                ),
+                // const SizedBox(
+                //   width: 300,
+                //   child: Column(
+                //     mainAxisAlignment: MainAxisAlignment.center,
+                //     crossAxisAlignment: CrossAxisAlignment.center,
+                //     children: [
+                //       Text(
+                //         "Nişanımızda",
+                //         style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
+                //       ),
+                //       Text(
+                //         "bizleri yalnız",
+                //         style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
+                //       ),
+                //       Text(
+                //         "bırakmadığınız",
+                //         style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
+                //       ),
+                //       Row(
+                //         mainAxisAlignment: MainAxisAlignment.center,
+                //         children: [
+                //           Text(
+                //             "için teşekkürler ",
+                //             style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16, fontWeight: FontWeight.w500),
+                //           ),
+                //           Text(
+                //             "💫",
+                //             style: TextStyle(color: Colors.amber),
+                //           ),
+                //         ],
+                //       ),
+                //     ],
+                //   ),
+                // )
               ],
             ),
           ),
